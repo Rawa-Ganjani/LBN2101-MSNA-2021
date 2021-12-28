@@ -1,0 +1,25 @@
+admin1Name,admin1Pcod,admin2Name,admin2Pcod,children_dropped,children_worked,access_distance,access_healthcare_issue,MDD,MAD,Anaemia,CVD,MMR,FCS,coping_strategy,reduced_strategy_index,hh1,hh2,hh3,hh4,hh5,hh6,hh7,hh8,hh9,hh10,n_indicators,mean_max_50,minimum_population
+Akkar,LB7,Akkar,LB51,2,3,1,4,1,1,3,NA,4,3,3,3,2,1,1,4,1,3,3,1,1,2,21,3,76096
+Baalbek-El Hermel,LB8,Baalbek,LB21,2,3,1,4,1,1,3,NA,1,3,3,3,2,1,1,1,1,3,2,1,1,1,21,3,49147
+Baalbek-El Hermel,LB8,El Hermel,LB22,2,3,1,4,2,1,2,NA,1,3,3,3,2,1,1,4,1,1,2,1,1,2,21,3,7220
+Beirut,LB1,Beirut,LB11,2,1,1,3,1,1,3,1,1,3,3,3,2,1,1,1,1,1,3,1,1,1,22,2,49756
+Bekaa,LB2,Rachaya,LB23,1,1,1,4,1,1,3,4,1,1,3,3,2,1,1,4,1,1,2,1,1,1,22,3,8201
+Bekaa,LB2,West Bekaa,LB24,1,3,1,4,1,1,3,4,1,3,3,3,2,1,1,1,1,1,3,1,1,1,22,3,17534
+Bekaa,LB2,Zahle,LB25,2,1,1,4,1,1,3,4,1,3,3,3,2,1,1,1,1,1,2,1,1,1,22,3,35093
+El Nabatieh,LB4,Hasbaya,LB42,2,1,1,4,2,1,2,4,1,1,3,3,2,1,1,1,1,1,2,1,1,2,22,2,6537
+El Nabatieh,LB4,Marjaayoun,LB43,1,1,1,4,1,1,2,4,1,1,3,3,4,1,1,1,1,1,3,1,1,2,22,3,16393
+Mount Lebanon,LB3,Aley,LB31,2,1,1,3,1,1,4,3,1,3,3,3,2,1,2,1,1,1,2,1,1,1,22,3,52977
+Mount Lebanon,LB3,Baabda,LB32,1,1,1,3,3,1,4,3,1,1,3,3,2,1,1,1,1,1,2,1,1,1,22,2,102901
+Mount Lebanon,LB3,Chouf,LB33,2,3,1,3,1,1,4,3,1,1,3,3,2,1,3,4,1,1,2,1,1,1,22,3,51561
+Mount Lebanon,LB3,El Meten,LB36,1,1,1,3,1,1,4,3,1,1,3,3,2,1,3,1,1,1,2,1,1,1,22,2,102084
+Mount Lebanon,LB3,Jbeil,LB34,1,1,1,3,1,1,3,3,1,3,3,3,2,1,3,1,1,1,2,1,1,1,22,2,28315
+Mount Lebanon,LB3,Kesrwane,LB35,1,1,1,3,3,1,4,3,1,1,3,3,2,1,1,1,1,1,2,1,1,1,22,2,56458
+North,LB5,Bcharre,LB53,1,3,1,4,2,1,4,1,4,3,3,3,4,1,1,1,1,1,3,1,1,1,22,3,5388
+North,LB5,El Batroun,LB52,1,3,1,3,1,1,4,1,4,1,3,3,2,1,1,1,1,1,3,1,1,1,22,3,13664
+North,LB5,El Koura,LB54,1,3,1,4,1,1,4,1,4,1,3,3,4,1,1,4,1,1,3,1,1,1,22,3,17477
+North,LB5,El Minieh-Dennie,LB55,2,3,1,4,1,1,4,1,4,3,3,3,4,1,1,1,1,1,3,1,1,1,22,3,31559
+North,LB5,Tripoli,LB56,2,3,1,3,1,1,4,1,4,3,3,3,4,1,3,1,1,1,3,2,1,2,22,3,49833
+North,LB5,Zgharta,LB57,2,3,1,4,1,1,4,1,4,1,3,3,3,1,1,1,1,1,3,1,1,1,22,3,18259
+South,LB6,Jezzine,LB62,2,3,1,4,1,1,3,3,1,1,3,3,2,1,1,1,1,1,3,1,1,2,22,3,6765
+South,LB6,Saida,LB61,1,3,1,4,1,1,2,3,1,3,3,3,4,1,1,1,1,3,3,1,1,2,22,3,53087
+South,LB6,Sour,LB63,2,3,1,4,2,1,2,3,1,1,3,3,4,1,1,1,1,1,2,1,1,1,22,3,50960

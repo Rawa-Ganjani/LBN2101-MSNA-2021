@@ -1,0 +1,25 @@
+"admin1Name","admin1Pcod","admin2Name","admin2Pcod","children_dropped","children_worked","access_distance","access_healthcare_issue","MDD","MAD","Anaemia","CVD","MMR","FCS","coping_strategy","reduced_strategy_index","% of HHs whose dwelling enclosure provides adequate safety to the occupants, protection from exposure, and low risk of failure in predictable hazards","% of HHs reporting to access their housing / shelter with security tenure","% of HHs reporting having access to sufficient quantity of water to cover transversal needs (drinking, cooking, personal hygiene, domestic use)","% of HHs reporting access to an improve sanitation facility","% of HHs reporting access to soap","% of HHs reporting decreased usage of Hygiene Items in the last 30 days","% of the population identified as having disabilities ","% of households in which women and girls avoid areas because they feel unsafe there","% HH missing at least one individual document ","% of HHs reporting issues when accessing assistance in the past 3 months","mean_max_50","total_population","minimum_population"
+"Akkar","LB7","Akkar","LB51",2,3,1,4,1,1,3,1,4,3,3,3,2,1,1,4,1,3,2,1,1,2,3,304384.6658,76096
+"Baalbek-El Hermel","LB8","Baalbek","LB21",2,3,1,4,1,1,3,5,1,3,3,3,3,1,1,1,1,3,3,1,1,1,3,196586.6094,49147
+"Baalbek-El Hermel","LB8","El Hermel","LB22",2,3,1,4,2,1,2,5,1,3,3,3,2,1,1,4,1,1,2,1,1,2,3,28880.76,7220
+"Beirut","LB1","Beirut","LB11",2,1,1,3,1,1,3,1,1,3,3,3,2,1,1,1,1,1,3,1,1,1,3,199025.0441,49756
+"Bekaa","LB2","Rachaya","LB23",1,1,1,4,1,1,3,1,1,1,3,3,2,1,1,4,1,1,2,1,1,1,3,32803.3704,8201
+"Bekaa","LB2","West Bekaa","LB24",1,3,1,4,1,1,3,1,1,3,3,3,2,1,1,1,1,1,3,1,1,1,3,70135.51677,17534
+"Bekaa","LB2","Zahle","LB25",2,1,1,4,1,1,3,1,1,3,3,3,2,1,1,1,1,1,2,1,1,1,3,140370.5092,35093
+"El Nabatieh","LB4","Hasbaya","LB42",2,1,1,4,2,1,2,4,1,1,3,3,2,1,1,1,1,1,2,1,1,2,3,26148.5639,6537
+"El Nabatieh","LB4","Marjaayoun","LB43",1,1,1,4,1,1,2,4,1,1,3,3,4,1,1,1,1,1,3,1,1,2,3,65572.89804,16393
+"Mount Lebanon","LB3","Aley","LB31",2,1,1,3,1,1,4,3,1,3,3,3,2,1,2,1,1,1,2,1,1,1,3,211908.5884,52977
+"Mount Lebanon","LB3","Baabda","LB32",1,1,1,3,3,1,4,3,1,1,3,3,2,1,1,1,1,1,2,1,1,1,3,411602.8587,102901
+"Mount Lebanon","LB3","Chouf","LB33",2,3,1,3,1,1,4,3,1,1,3,3,2,1,3,4,1,1,2,1,1,1,3,206242.8897,51561
+"Mount Lebanon","LB3","El Meten","LB36",1,1,1,3,1,1,4,3,1,1,3,3,2,1,3,1,1,1,2,1,1,1,3,408336.1681,102084
+"Mount Lebanon","LB3","Jbeil","LB34",1,1,1,3,1,1,3,3,1,3,3,3,2,1,3,1,1,1,2,1,1,1,3,113261.052,28315
+"Mount Lebanon","LB3","Kesrwane","LB35",1,1,1,3,3,1,4,3,1,1,3,3,2,1,1,1,1,1,2,1,1,1,3,225832.1841,56458
+"North","LB5","Bcharre","LB53",1,3,1,4,2,1,4,1,4,3,3,3,4,1,1,1,1,1,3,1,1,1,3,21552.8495,5388
+"North","LB5","El Batroun","LB52",1,3,1,3,1,1,4,1,4,1,3,3,2,1,1,1,1,1,3,1,1,1,3,54655.27009,13664
+"North","LB5","El Koura","LB54",1,3,1,4,1,1,4,1,4,1,3,3,4,1,1,4,1,1,3,1,1,1,4,69907.152,17477
+"North","LB5","El Minieh-Dennie","LB55",2,3,1,4,1,1,4,1,4,3,3,3,4,1,1,1,1,1,3,1,1,1,3,126236.1071,31559
+"North","LB5","Tripoli","LB56",2,3,1,3,1,1,4,1,4,3,3,3,4,1,3,1,1,1,3,2,1,2,3,199333.8908,49833
+"North","LB5","Zgharta","LB57",2,3,1,4,1,1,4,1,4,1,3,3,3,1,1,1,1,1,3,1,1,1,3,73034.76886,18259
+"South","LB6","Jezzine","LB62",2,3,1,4,1,1,3,3,1,1,3,3,2,1,1,1,1,1,3,1,1,2,3,27060.37899,6765
+"South","LB6","Saida","LB61",1,3,1,4,1,1,2,3,1,3,3,3,4,1,1,1,1,3,3,1,1,2,3,212347.6118,53087
+"South","LB6","Sour","LB63",1,3,1,4,2,1,2,3,1,1,3,3,4,1,1,1,1,1,2,1,1,1,3,203841.3319,50960
