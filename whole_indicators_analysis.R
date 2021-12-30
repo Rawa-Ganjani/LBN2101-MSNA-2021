@@ -21,11 +21,11 @@ aggregation <- "all"
 
 # read data from excel file
 df <-
-  read_excel("input/dataset/MSNA_data_clean_2021-12-22.xlsx", sheet = 2, guess_max = 50000)
+  read_excel("input/dataset/MSNA_data_clean_2021-12-30.xlsx", sheet = 2, guess_max = 50000)
 
 # import loop data
 indiv_df <-
-  read_excel("input/dataset/MSNA_data_clean_2021-12-22.xlsx", sheet = 3, guess_max = 50000) 
+  read_excel("input/dataset/MSNA_data_clean_2021-12-30.xlsx", sheet = 3, guess_max = 50000) 
 
 questions <- read_excel("input/questionnaire/LBN_MSNA_SurveyKobo_V5_TTC_translated.xlsx", sheet = 1)
 choices <- read_excel("input/questionnaire/LBN_MSNA_SurveyKobo_V5_TTC_translated.xlsx", sheet = 2)
@@ -94,6 +94,7 @@ indiv_df <- indiv_df %>%
     area1 = df$area1[match(X_submission__uuid, df$X_uuid)],
     area2 = df$area2[match(X_submission__uuid, df$X_uuid)],
     gender_head = df$gender_head[match(X_submission__uuid, df$X_uuid)],
+    nationality_hh = df$nationality_hh[match(X_submission__uuid, df$X_uuid)],
     age_group = case_when(age_yrs_ind < 18 ~ "0_17",
                           age_yrs_ind < 60 ~ "18_59",
                           age_yrs_ind >= 60 ~ "60+")
@@ -105,33 +106,40 @@ weight_fun_indiv <- function(indiv_df){
   as.numeric(indiv_df$weight)
 }
 
-
 overall_analysis <- output_and_format(df, dap, weight_fun, questions, choices, "all", "all")
 per_group_analysis <- output_and_format(df, dap, weight_fun, questions, choices, "all", "population_group")
 per_gender_head_analysis <- output_and_format(df, dap, weight_fun, questions, choices, "all", "gender_head")
+per_nationality_analysis <- output_and_format(df, dap[dap$dependent.variable != "nationality_hh",], weight_fun, questions, choices, "all", "nationality_hh")
 per_district_analysis <- output_and_format(df, dap, weight_fun, questions, choices, "area1", "population_group")
 per_district_analysis$governorate <- df$governorate[match(per_district_analysis$repeat.var.value, df$district)]
 per_governorate_analysis <- output_and_format(df, dap, weight_fun, questions, choices, "area2", "population_group")
+per_region_analysis <- output_and_format(df, dap, weight_fun, questions, choices, "region", "population_group")
 overall_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "all", "all")
 per_age_group_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "all", "age_group")
 per_group_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "all", "population_group")
 per_gender_head_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "all", "gender_head")
+per_nationality_analysis_indiv <- output_and_format(indiv_df, dap[dap$dependent.variable != "nationality_hh",], weight_fun, questions, choices, "all", "nationality_hh")
 per_district_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "area1", "population_group")
 per_district_analysis_indiv$governorate <- df$governorate[match(per_district_analysis_indiv$repeat.var.value, df$district)]
 per_governorate_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "area2", "population_group")
+per_region_analysis_indiv <- output_and_format(indiv_df, dap, weight_fun, questions, choices, "region", "population_group")
 
 write_list <- list(
   "overall_analysis" = overall_analysis,
   "per_group_analysis" = per_group_analysis,
   "per_gender_head_analysis" = per_gender_head_analysis,
+  "per_nationality_analysis" = per_nationality_analysis,
   "per_district_analysis" = per_district_analysis,
   "per_governorate_analysis" = per_governorate_analysis,
+  "per_region_analysis" = per_region_analysis,
   "overall_analysis_indiv" = overall_analysis_indiv,
   "per_age_group_analysis_indiv" = per_age_group_analysis_indiv,
   "per_group_analysis_indiv" = per_group_analysis_indiv,
   "per_gender_head_analysis_indiv" = per_gender_head_analysis_indiv,
+  "per_nationality_analysis_indiv" = per_nationality_analysis_indiv,
   "per_district_analysis_indiv" = per_district_analysis_indiv,
-  "per_governorate_analysis_indiv" = per_governorate_analysis_indiv
+  "per_governorate_analysis_indiv" = per_governorate_analysis_indiv,
+  "per_region_analysis_indiv" = per_region_analysis_indiv
 )
 
 illuminate::write_excel_as_reach_format(write_list,

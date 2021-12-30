@@ -15,11 +15,11 @@ library(openxlsx)
 library(sf)
 
 df <-
-  read_excel("input/dataset/MSNA_data_clean_2021-12-22.xlsx", sheet = 2, guess_max = 50000)
+  read_excel("input/dataset/MSNA_data_clean_2021-12-30.xlsx", sheet = 2, guess_max = 50000)
 
 # import loop data
 indiv_df <-
-  read_excel("input/dataset/MSNA_data_clean_2021-12-22.xlsx", sheet = 3, guess_max = 50000) 
+  read_excel("input/dataset/MSNA_data_clean_2021-12-30.xlsx", sheet = 3, guess_max = 50000) 
 
 questions <- read_excel("input/questionnaire/LBN_MSNA_SurveyKobo_V5_TTC_translated.xlsx", sheet = 1)
 choices <- read_excel("input/questionnaire/LBN_MSNA_SurveyKobo_V5_TTC_translated.xlsx", sheet = 2)

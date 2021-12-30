@@ -13,12 +13,12 @@ library(sf)
 
 # read data from excel file
 df <-
-  read_excel("input/dataset/MSNA_data_clean_2021-12-22.xlsx", sheet = 2, guess_max = 50000) %>%
+  read_excel("input/dataset/MSNA_data_clean_2021-12-30.xlsx", sheet = 2, guess_max = 50000) %>%
   filter(population_group == "LEB")
 
 # import loop data
 indiv_df <-
-  read_excel("input/dataset/MSNA_data_clean_2021-12-22.xlsx", sheet = 3, guess_max = 50000) 
+  read_excel("input/dataset/MSNA_data_clean_2021-12-30.xlsx", sheet = 3, guess_max = 50000) 
 
 ocha_boundaries <- st_read("input/spatial_data/LBN_Admin_level2.geojson")
 
@@ -93,7 +93,7 @@ for (i in 1:nrow(output)) {
     ))[1, 1:9]), 0)
 }
 
-output$total_population <- sampling_frame$population[match(paste0(output$admin2Name, "_", "LEB"), sampling_frame$strata)]
+output$total_population <- sampling_frame$individual[match(paste0(output$admin2Name, "_", "LEB"), sampling_frame$strata)]
 output$minimum_population <- round(output$total_population * 0.25,0)
 
 output_names <- data.frame(names = names(output))
