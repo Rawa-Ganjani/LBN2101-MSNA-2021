@@ -32,11 +32,59 @@ source("recoding.R")
 
 
 dap <- read.csv("input/dap/pin_dap.csv")
+dap <- dap %>% rbind(read.csv("input/dap/dap_extra.csv"))
 
 df$region <- case_when(df$governorate %in% c("Baalbek-El Hermel", "Bekaa") ~ "Baalbek-El Hermel and Bekaa",
                        df$governorate %in% c("Beirut", "Mount Lebanon") ~ "BML",
                        df$governorate %in% c("North", "Akkar") ~ "North and Akkar",
                        df$governorate %in% c("South", "El Nabatieh") ~ "South and Nabatieh")
+
+#calculating the new indicator for Migration group
+df$hh11 <-
+  case_when(sum_row(df[, c(
+    "security_concerns_boys.corporal_punishment",
+    "security_concerns_boys.being_threatened_with_violence",
+    "security_concerns_boys.being_kidnapped",
+    "security_concerns_boys.suffering_from_physical_harassment_or_violence_not_sexual",
+    "security_concerns_boys.suffering_from_verbal_harassment",
+    "security_concerns_boys.suffering_from_verbal_harassment",
+    "security_concerns_boys.discrimination_or_persecution_because_of_ethnicity_status__etc",
+    "security_concerns_boys.being_killed",
+    "security_concerns_boys.being_detained",
+    "security_concerns_boys.being_exploited_i_e_being_engaged_in_harmful_forms_of_labor_for_economic_gain_of_the_exploiter",
+    "security_concerns_boys.being_sexually_exploited_in_exchange_of_humanitarian_aid_goods_services_money_or_preference_treatment",
+    "security_concerns_boys.being_recruited_by_armed_groups",
+    "security_concerns_boys.being_sent_abroad_to_find_work",
+    "security_concerns_girls.corporal_punishment",
+    "security_concerns_girls.being_threatened_with_violence",
+    "security_concerns_girls.being_kidnapped",
+    "security_concerns_girls.suffering_from_physical_harassment_or_violence_not_sexual",
+    "security_concerns_girls.suffering_from_verbal_harassment",
+    "security_concerns_girls.suffering_from_verbal_harassment",
+    "security_concerns_girls.discrimination_or_persecution_because_of_ethnicity_status__etc",
+    "security_concerns_girls.being_killed",
+    "security_concerns_girls.being_detained",
+    "security_concerns_girls.being_exploited_i_e_being_engaged_in_harmful_forms_of_labor_for_economic_gain_of_the_exploiter",
+    "security_concerns_girls.being_sexually_exploited_in_exchange_of_humanitarian_aid_goods_services_money_or_preference_treatment",
+    "security_concerns_girls.being_recruited_by_armed_groups",
+    "security_concerns_girls.being_sent_abroad_to_find_work",
+    "security_concerns_women.corp_punishment",
+    "security_concerns_women.threats_violence",
+    "security_concerns_women.abduction",
+    "security_concerns_women.phys_harassment",
+    "security_concerns_women.verb_harassment",
+    "security_concerns_women.sex_harassment",
+    "security_concerns_women.discrimination_ethnicity",
+    "security_concerns_women.killed",
+    "security_concerns_women.detention",
+    "security_concerns_women.exploitation",
+    "security_concerns_women.sex_exploitation",
+    "security_concerns_women.recruitment_armed_grps",
+    "security_concerns_women.sent_abroad_work",
+    "security_concerns_women.deportation"
+  )], na.rm = T) > 0 ~ 3, T ~ 1)
+
+df$hh12 <- case_when(df$desired_info_type.assistance_return == 1 ~ 3, T ~ 1)
 
 dap$repeat.for.variable <- "region"
 dap$independent.variable <- "all"
@@ -84,15 +132,51 @@ for (indicator in unique(summary$dependent.var)) {
   }
 }
 
+#new nutrition/food security dataset to be used here
+area_indicators <- area_indicators[,c(1:8)]
+
+nutrition_indicators <- read_excel("input/dataset/nutrition dataset_migration.xlsx")
+
+area_indicators <- left_join(area_indicators, nutrition_indicators, by=c("admin2Name" = "District"))
+
+#Fixed
+area_indicators$MDD <- case_when(
+  area_indicators$MDD <= 0.1 ~ 5,
+  area_indicators$MDD <= 0.2 ~ 4,
+  area_indicators$MDD <= 0.4 ~ 3,
+  area_indicators$MDD < 0.7 ~ 2,
+  T ~ 1
+)
+
+#Fixed
+area_indicators$MAD <- case_when(
+  area_indicators$MAD <= 0.1 ~ 5,
+  area_indicators$MAD <= 0.2 ~ 4,
+  area_indicators$MAD <= 0.4 ~ 3,
+  area_indicators$MAD < 0.7 ~ 2,
+  T ~ 1
+)
+
+area_indicators$Anaemia <- case_when(
+  area_indicators$Anaemia >= 0.4 ~ 4,
+  area_indicators$Anaemia >= 0.2 ~ 3,
+  area_indicators$Anaemia >= 0.05 ~ 2,
+  T ~ 1
+)
+
+food_security_indicators <- read_excel("input/dataset/food_security_data_migration.xlsx")
+
+food_security_indicators <- food_security_indicators[,c("District", "FCS", "coping_strategy", "reduced_strategy_index")]
+
+area_indicators <- left_join(area_indicators, food_security_indicators, by=c("admin2Name"="District"))
+
 indicator_names <- names(area_indicators)
 indicator_names <- indicator_names[5:length(indicator_names)]
-indicator_names <- indicator_names[!indicator_names %in% c("CVD", "MMR")]
 
 area_indicators$region <- case_when(area_indicators$admin1Name %in% c("Baalbek-El Hermel", "Bekaa") ~ "Baalbek-El Hermel and Bekaa",
                                     area_indicators$admin1Name %in% c("Beirut", "Mount Lebanon") ~ "BML",
                                     area_indicators$admin1Name %in% c("North", "Akkar") ~ "North and Akkar",
                                     area_indicators$admin1Name %in% c("South", "El Nabatieh") ~ "South and Nabatieh")
-
 
 regional_indicators <- area_indicators %>% group_by(region) %>%
   summarize_at(.funs = mean, .vars = indicator_names) %>%
@@ -104,8 +188,8 @@ output$mean_max_50 <- 0
 for (i in 1:nrow(output)) {
   output$mean_max_50[i] <-
     round(mean(as.matrix(sort(
-      output[i, indicator_names], decreasing = T
-    ))[1, 1:8]), 0)
+      output[i, c(indicator_names, dap$dependent.variable)], decreasing = T
+    ))[1, 1:11]), 0)
 }
 
 output$total_population <- sampling_frame$individual[match(paste0(output$region, "_", "MIG"), sampling_frame$strata)]
